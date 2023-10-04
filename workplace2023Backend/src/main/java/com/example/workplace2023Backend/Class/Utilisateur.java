@@ -11,16 +11,16 @@ import jakarta.persistence.Id;
 public class Utilisateur {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    int idUtilisateur;
-    String nom;
-    String prenom;
+    int id;
+    String name;
+    String firstName;
 
-    String mdp;
-    String mail;
-    String ville;
+    String passWord;
+    String eMail;
+    String city;
     int score;
     int scoreGlobal;
-    int niveau;
+    int skill;
 
 
 

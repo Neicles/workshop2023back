@@ -9,14 +9,14 @@ public class AuthService {
     @Autowired
     private utilisateurRepository utilisateurRepository;
 
-    public boolean verifierEmailEtMotDePasse(String mail, String motDePasse) {
+    public Utilisateur verifierEmailEtMotDePasse(String mail, String motDePasse) {
         Utilisateur utilisateur = utilisateurRepository.findByMail(mail);
 
-        if (utilisateur != null) {
+        if (utilisateur != null && utilisateur.getMdp().equals(motDePasse)) {
             // Comparaison du mot de passe entré avec le mot de passe de l'utilisateur
-            return motDePasse.equals(utilisateur.getMdp());
+            return utilisateur;
         } else {
-            return false; // L'utilisateur n'a pas été trouvé par l'adresse e-mail
+            return null; // L'utilisateur n'a pas été trouvé par l'adresse e-mail
         }
     }
 }
