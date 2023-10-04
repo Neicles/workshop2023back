@@ -2,6 +2,8 @@ package com.example.workplace2023Backend.contoller;
 import com.example.workplace2023Backend.Class.utilisateurRepository;
 import com.example.workplace2023Backend.Class.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,14 +24,16 @@ public class MainController {
 
 
     @PostMapping("/connexion")
-    public String connexion(Model model) {
-        boolean authentifie = authService.verifierEmailEtMotDePasse("admin@gmail.com", "onx7ud");
-        if (authentifie) {
+    public ResponseEntity<Utilisateur> connexion() {
+        String email = "admin@gmail.com";
+        String motDePasse = "onx7ud";
+        Utilisateur utilisateur = authService.verifierEmailEtMotDePasse(email, motDePasse);
+        if (utilisateur != null) {
             // L'authentification est réussie, redirigez vers une page de succès.
-            return "authentification-reussie";
+            return ResponseEntity.ok(utilisateur);
         } else {
             // L'authentification a échoué, redirigez vers une page d'erreur.
-            return "authentification-echouee";
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
     }
 
