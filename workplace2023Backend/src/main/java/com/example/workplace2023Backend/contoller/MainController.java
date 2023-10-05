@@ -6,6 +6,7 @@ import com.example.workplace2023Backend.Class.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,9 +29,7 @@ public class MainController {
     @Autowired
     private AuthService authService;
     @PostMapping("/connexion")
-    public ResponseEntity<Utilisateur> connexion() {
-        String email = "admin@gmail.com";
-        String motDePasse = "onx7ud";
+    public ResponseEntity<Utilisateur> connexion(@RequestBody String email, String motDePasse) {
         Utilisateur utilisateur = authService.verifierEmailEtMotDePasse(email, motDePasse);
         if (utilisateur != null) {
             // L'authentification est réussie, redirigez vers une page de succès.
