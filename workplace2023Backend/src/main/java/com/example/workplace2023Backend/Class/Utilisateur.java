@@ -27,11 +27,6 @@ public class Utilisateur {
     int niveau;
 
 
-    int id_demande ;
-
-
-
-
     public int getIdUtilisateur() {
         return idUtilisateur;
     }
@@ -104,11 +99,4 @@ public class Utilisateur {
         this.niveau = niveau;
     }
 
-    public int getid_Demande() {
-        return id_demande ;
-    }
-
-    public void setid_Demande(int id_demande ) {
-        this.id_demande  = id_demande ;
-    }
 }
