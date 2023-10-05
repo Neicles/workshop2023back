@@ -9,24 +9,24 @@ public class Utilisateur {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     int idUtilisateur;
-    @Column(name = "nom")
+
     String nom;
-    @Column(name = "prenom")
+
     String prenom;
-    @Column(name = "mdp")
+
     String mdp;
-    @Column(name = "mail")
+
     String mail;
-    @Column(name = "ville")
+
     String ville;
-    @Column(name = "score")
+
     int score;
-    @Column(name = "scoreGlobal")
+
     int scoreGlobal;
-    @Column(name = "niveau")
+
     int niveau;
 
-    @Column(name = "id_demande ")
+
     int id_demande ;
 
 
