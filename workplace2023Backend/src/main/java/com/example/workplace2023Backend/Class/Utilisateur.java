@@ -6,9 +6,16 @@ import jakarta.persistence.*;
 
 @Entity
 public class Utilisateur {
+    public int getId_Utilisateur() {
+        return id_Utilisateur;
+    }
+
+    public void setId_Utilisateur(int id_Utilisateur) {
+        this.id_Utilisateur = id_Utilisateur;
+    }
+
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    int idUtilisateur;
+    int id_Utilisateur;
 
     String nom;
 
@@ -27,13 +34,6 @@ public class Utilisateur {
     int niveau;
 
 
-    public int getIdUtilisateur() {
-        return idUtilisateur;
-    }
-
-    public void setIdUtilisateur(int idUtilisateur) {
-        this.idUtilisateur = idUtilisateur;
-    }
 
     public String getNom() {
         return nom;
