@@ -6,14 +6,9 @@ import com.example.workplace2023Backend.Class.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -28,9 +23,12 @@ public class MainController {
 
     @Autowired
     private AuthService authService;
+    @CrossOrigin(origins = "http://localhost:3001")
     @PostMapping("/connexion")
-    public ResponseEntity<Utilisateur> connexion(@RequestBody String email, String motDePasse) {
-        Utilisateur utilisateur = authService.verifierEmailEtMotDePasse(email, motDePasse);
+    public ResponseEntity<Utilisateur> connexion(@RequestBody AuthRequest request) {
+        String email = request.getEmail();
+        String motDePasse = request.getMotDePasse();
+        Utilisateur utilisateur = authService.verifierEmailEtMotDePasse(email,motDePasse);
         if (utilisateur != null) {
             // L'authentification est réussie, redirigez vers une page de succès.
             return ResponseEntity.ok(utilisateur);

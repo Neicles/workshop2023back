@@ -7,7 +7,7 @@ public class Demande {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     int idDemande;
-    int idCategorie;
+
     String libelle;
 
     String message;
@@ -15,6 +15,8 @@ public class Demande {
     boolean resolu;
 
     boolean accepte;
+
+    int idCategorie;
 
     public int getIdDemande() {
         return idDemande;
