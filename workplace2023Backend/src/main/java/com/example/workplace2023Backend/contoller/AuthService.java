@@ -1,5 +1,7 @@
 package com.example.workplace2023Backend.contoller;
 import com.example.workplace2023Backend.Class.demandeRepository;
+import com.example.workplace2023Backend.Class.categorieRepository;
+import com.example.workplace2023Backend.Class.competenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.workplace2023Backend.Class.Utilisateur;
@@ -7,6 +9,10 @@ import com.example.workplace2023Backend.Class.utilisateurRepository;
 @Service
 public class AuthService {
 
+    @Autowired
+    private competenceRepository competenceRepository;
+    @Autowired
+    private categorieRepository categorieRepository;
     @Autowired
     private utilisateurRepository utilisateurRepository;
     @Autowired
