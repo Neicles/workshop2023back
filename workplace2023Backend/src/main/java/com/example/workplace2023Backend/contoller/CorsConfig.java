@@ -1,0 +1,16 @@
+package com.example.workplace2023Backend.contoller;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+@Configuration
+public class CorsConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/example")
+                .allowedOrigins("http://localhost:8080") // Specify your allowed origins
+                .allowedMethods("GET", "POST") // Specify allowed HTTP methods
+                .allowCredentials(false);
+    }
+}

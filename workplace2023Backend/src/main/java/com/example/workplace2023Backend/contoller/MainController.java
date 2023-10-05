@@ -6,11 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller // This means that this class is a Controller
 @RequestMapping(path="/api") // This means URL's start with /demo (after Application path)
@@ -21,6 +19,7 @@ public class MainController {
 
     @Autowired
     private AuthService authService;
+    @CrossOrigin(origins = "http://localhost:3001")
     @PostMapping("/connexion")
     public ResponseEntity<Utilisateur> connexion() {
         String email = "admin@gmail.com";
@@ -33,6 +32,18 @@ public class MainController {
             // L'authentification a échoué, redirigez vers une page d'erreur.
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
+
+    }
+    @CrossOrigin(origins = "http://localhost:3001")
+    @GetMapping("/tous")
+    public ResponseEntity<List<Utilisateur>> recupererTousLesUtilisateurs() {
+        List<Utilisateur> utilisateurs = utilisateurRepository.findAll();
+
+        if (utilisateurs.isEmpty()) {
+            return ResponseEntity.notFound().build(); // Réponse HTTP 404 en cas d'erreur
+        }
+
+        return ResponseEntity.ok(utilisateurs); // Réponse HTTP 200 avec les utilisateurs en JSON
     }
 
     @GetMapping(path="/all")

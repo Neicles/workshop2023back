@@ -1,10 +1,7 @@
 package com.example.workplace2023Backend.Class;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 
 @Entity
@@ -12,15 +9,26 @@ public class Utilisateur {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     int idUtilisateur;
+    @Column(name = "nom")
     String nom;
+    @Column(name = "prenom")
     String prenom;
-
+    @Column(name = "mdp")
     String mdp;
+    @Column(name = "mail")
     String mail;
+    @Column(name = "ville")
     String ville;
+    @Column(name = "score")
     int score;
+    @Column(name = "scoreGlobal")
     int scoreGlobal;
+    @Column(name = "niveau")
     int niveau;
+
+    @Column(name = "id_demande ")
+    int id_demande ;
+
 
 
 
@@ -94,5 +102,13 @@ public class Utilisateur {
 
     public void setNiveau(int niveau) {
         this.niveau = niveau;
+    }
+
+    public int getid_Demande() {
+        return id_demande ;
+    }
+
+    public void setid_Demande(int id_demande ) {
+        this.id_demande  = id_demande ;
     }
 }
