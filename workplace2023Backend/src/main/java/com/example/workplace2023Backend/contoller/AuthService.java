@@ -1,4 +1,5 @@
 package com.example.workplace2023Backend.contoller;
+import com.example.workplace2023Backend.Class.demandeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.workplace2023Backend.Class.Utilisateur;
@@ -8,6 +9,8 @@ public class AuthService {
 
     @Autowired
     private utilisateurRepository utilisateurRepository;
+    @Autowired
+    private demandeRepository demandeRepository;
 
     public Utilisateur verifierEmailEtMotDePasse(String mail, String motDePasse) {
         Utilisateur utilisateur = utilisateurRepository.findByMail(mail);
