@@ -1,9 +1,6 @@
 package com.example.workplace2023Backend.Class;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Demande {
@@ -17,7 +14,7 @@ public class Demande {
 
     boolean resolu;
 
-    boolean accepter;
+    boolean accepte;
 
     public int getIdDemande() {
         return idDemande;
@@ -59,11 +56,11 @@ public class Demande {
         this.resolu = resolu;
     }
 
-    public boolean isAccepter() {
-        return accepter;
+    public boolean isAccepte() {
+        return accepte;
     }
 
-    public void setAccepter(boolean accepter) {
-        this.accepter = accepter;
+    public void setAccepte(boolean accepte) {
+        this.accepte = accepte;
     }
 }
